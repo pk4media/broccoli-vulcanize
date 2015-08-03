@@ -17,13 +17,16 @@ var inputTree = 'public';
 var options = {
   input: 'index.html',
   output: 'output/vulcanized.html',
-  csp: true,
-  inline: true,
-  strip: true,
-  excludes: {
-    imports: ["(^data:)|(^http[s]?:)|(^\/)"],
-    scripts: ["(^data:)|(^http[s]?:)|(^\/)"],
-    styles: ["(^data:)|(^http[s]?:)|(^\/)"]
+  crisper: true,
+  excludes: [/^data:/, /^http[s]?:/, /^\//],
+  abspath: '/webroot/',
+  stripExcludes: false,
+  stripComments: false,
+  inlineScripts: false,
+  inlineCss: false,
+  implicitStrip: false,
+  outputHandler: function(filename, data) {
+    // An output handler function to call rather than writing the processing result to file
   }
 };
 
